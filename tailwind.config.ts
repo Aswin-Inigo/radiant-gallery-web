@@ -13,6 +13,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        'display': ['Playfair Display', 'serif'],
+        'body': ['Inter', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -22,6 +26,8 @@ export default {
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
+          light: "hsl(var(--primary-light))",
+          dark: "hsl(var(--primary-dark))",
         },
         secondary: {
           DEFAULT: "hsl(var(--secondary))",
@@ -46,6 +52,13 @@ export default {
         card: {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
+        },
+        studio: {
+          gold: "hsl(var(--studio-gold))",
+          "gold-light": "hsl(var(--studio-gold-light))",
+          charcoal: "hsl(var(--studio-charcoal))",
+          cream: "hsl(var(--studio-cream))",
+          warm: "hsl(var(--studio-warm))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",

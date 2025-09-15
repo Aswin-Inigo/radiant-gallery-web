@@ -1,42 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Photography Studio Design System - Elegant & Professional */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
+    /* Core Background Colors */
+    --background: 28 25% 97%;
+    --foreground: 0 0% 8%;
+    
+    /* Card & Surface Colors */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
+    --card-foreground: 0 0% 8%;
+    
+    /* Interactive Elements */
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
+    --popover-foreground: 0 0% 8%;
+    
+    /* Brand Colors - Elegant Gold & Deep Black */
+    --primary: 40 95% 55%;
+    --primary-foreground: 0 0% 8%;
+    --primary-light: 42 100% 85%;
+    --primary-dark: 35 100% 35%;
+    
+    /* Secondary - Warm Cream */
+    --secondary: 30 35% 92%;
+    --secondary-foreground: 0 0% 8%;
+    
+    /* Muted - Sophisticated Grays */
+    --muted: 15 5% 88%;
+    --muted-foreground: 0 0% 35%;
+    
+    /* Accent - Deep Charcoal */
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 98%;
+    
+    /* Status Colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    
+    /* Borders & Inputs */
+    --border: 20 15% 85%;
+    --input: 20 15% 85%;
+    --ring: 40 95% 55%;
+    
+    /* Design System */
+    --radius: 0.75rem;
+    
+    /* Photography Studio Specific Colors */
+    --studio-gold: 40 95% 55%;
+    --studio-gold-light: 42 100% 85%;
+    --studio-charcoal: 0 0% 15%;
+    --studio-cream: 30 35% 92%;
+    --studio-warm: 28 25% 97%;
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(40 95% 55% / 0.1) 0%, hsl(0 0% 15% / 0.05) 100%);
+    --gradient-overlay: linear-gradient(180deg, transparent 0%, hsl(0 0% 0% / 0.7) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(40 95% 55%) 0%, hsl(35 100% 45%) 100%);
+    
+    /* Shadows */
+    --shadow-soft: 0 4px 20px hsl(0 0% 0% / 0.08);
+    --shadow-medium: 0 8px 30px hsl(0 0% 0% / 0.12);
+    --shadow-strong: 0 20px 40px hsl(0 0% 0% / 0.16);
+    --shadow-gold: 0 8px 30px hsl(40 95% 55% / 0.3);
+    
+    /* Typography Scale */
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Inter', sans-serif;
+    
+    /* Animation Timing */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --sidebar-background: 0 0% 98%;
 
@@ -100,6 +138,106 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-body antialiased;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  /* Photography Studio Component Styles */
+  .hero-gradient {
+    background: var(--gradient-hero);
+  }
+  
+  .text-gradient {
+    background: var(--gradient-gold);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  
+  .gallery-card {
+    @apply relative overflow-hidden rounded-lg shadow-lg transition-transform duration-300 hover:scale-105;
+  }
+  
+  .gallery-overlay {
+    background: var(--gradient-overlay);
+  }
+  
+  .section-spacing {
+    @apply py-16 md:py-24;
+  }
+  
+  .container-custom {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  
+  /* Elegant animations */
+  .fade-in {
+    animation: fadeIn 0.6s ease-out forwards;
+  }
+  
+  .slide-up {
+    animation: slideUp 0.8s ease-out forwards;
+  }
+  
+  .stagger-animation > * {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+  
+  .stagger-animation > *:nth-child(1) { animation-delay: 0.1s; }
+  .stagger-animation > *:nth-child(2) { animation-delay: 0.2s; }
+  .stagger-animation > *:nth-child(3) { animation-delay: 0.3s; }
+  .stagger-animation > *:nth-child(4) { animation-delay: 0.4s; }
+  .stagger-animation > *:nth-child(5) { animation-delay: 0.5s; }
+  .stagger-animation > *:nth-child(6) { animation-delay: 0.6s; }
+}
+
+@layer utilities {
+  .shadow-studio {
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .shadow-studio-medium {
+    box-shadow: var(--shadow-medium);
+  }
+  
+  .shadow-studio-strong {
+    box-shadow: var(--shadow-strong);
+  }
+  
+  .shadow-gold {
+    box-shadow: var(--shadow-gold);
+  }
+}
+
+/* Keyframes for animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
   }
 }
